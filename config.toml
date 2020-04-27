@@ -1,0 +1,21 @@
+# baseURL = "https://coxley.org/"
+languageCode = "en-us"
+title = "Codey Oxley"
+theme = ["slim"]
+googleAnalytics = "UA-164601472-1"
+
+[permalinks]
+  post = "/:filename"
+
+[params]
+  Subtitle = ""
+  GithubID = "coxley"
+  AnalyticsID = "UA-164601472-1"
+  # DisqusShortname = "Your Disqus shortname"
+  Summary = false
+  Content = false
+  mainSections = ["post"]
+
+[markup]
+  [markup.highlight]
+    tabWidth = 2
