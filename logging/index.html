@@ -108,8 +108,10 @@ class DumbHandler(logging.Handler):
         print(f&quot;{self.title}: {record.getMessage()}&quot;)
 
 
-logging.root == logging.getLogger('')  # True
-logging.root.setLevel(logging.DEBUG)   # Default level is WARNING
+logging.root == logging.getLogger('')
+# True
+logging.root.setLevel(logging.DEBUG)
+# Default level is WARNING
 
 logging.root.addHandler(DumbHandler('root'))
 logging.getLogger('project.foo').addHandler(DumbHandler('project.foo'))
@@ -159,8 +161,10 @@ def foo(logger: logging.Logger):
 <ul>
 <li>Zero special logger instances</li>
 <li>Fewest number of Handlers (1)</li>
+<li>No changes at logging call-site</li>
+</ul>
 
-<li><p>No changes at logging call-site</p>
+<p>.</p>
 
 <pre><code class="language-python">&quot;&quot;&quot;
 Use `contextvars` to share metadata with your log handler.
@@ -183,21 +187,21 @@ LOG = logging.getLogger(__name__)
 ReqID = ContextVar('req_id')
 
 class ContextHandler(logging.Handler):
-def emit(self, record: logging.LogRecord):
-    msg = record.getMessage()
-    if ReqID.get(None) is not None:
-        msg = f&quot;[{ReqID.get()}] {msg}&quot;
+    def emit(self, record: logging.LogRecord):
+        msg = record.getMessage()
+        if ReqID.get(None) is not None:
+            msg = f&quot;[{ReqID.get()}] {msg}&quot;
 
-    # Don't print.
-    # Combine with logging over the network or use
-    # a custom formatter attached to StreamHandler
-    print(msg)
+        # Don't print.
+        # Combine with logging over the network or use
+        # a custom formatter attached to StreamHandler
+        print(msg)
 
 
 def do_work():
-LOG.info(&quot;starting request...&quot;)
-ReqID.set(randint(100, 500))
-LOG.info(&quot;request finished&quot;)
+    LOG.info(&quot;starting request...&quot;)
+    ReqID.set(randint(100, 500))
+    LOG.info(&quot;request finished&quot;)
 
 
 # If you want to capture more logs from the program, attach handler
@@ -222,8 +226,7 @@ copy_context().run(do_work)
 #
 # starting request...
 # [381] request finished
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>For more information on <code>contextvars</code>, see: <a href="https://docs.python.org/3/library/contextvars.html">https://docs.python.org/3/library/contextvars.html</a></p>
 
