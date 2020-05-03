@@ -4,11 +4,11 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<title> Python Logging: The Missing Guide &middot; Codey Oxley </title>
+<title> Python Logging: The Missing Guide </title>
 
 
-<link rel="stylesheet" href="https://coxley.github.io/css/slim.css">
-<link rel="stylesheet" href="https://coxley.github.io/css/highlight.min.css">
+<link rel="stylesheet" href="https://coxley.org/css/slim.css">
+<link rel="stylesheet" href="https://coxley.org/css/highlight.min.css">
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro' rel='stylesheet' type='text/css'>
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
@@ -22,26 +22,17 @@
 <body>
   <div class="container">
     <div class="header">
-  <h1 class="site-title"><a href="https://coxley.github.io/">Codey Oxley</a></h1>
+  <h1 class="site-title"><a href="https://coxley.org/">Codey Oxley</a></h1>
   <p class="site-tagline"></p>
-  <div class="nav">
-    <a class="nav-btn" href="#">
-      <span class="ci ci-burger"></span>
-    </a>
-    <ul class="nav-list">
-       
-	  <li class="spacer">&ac;</li>
-
-      <li><a href="https://github.com/coxley">Github</a></li>  
-    </ul>
-  </div>
 </div>
+
     <div class="content">
       <div class="posts">
         <div class="post">
-          <h2 class="post-title"><a href="https://coxley.github.io/logging/">Python Logging: The Missing Guide</a></h2>
+          <h1 class="post-title"><a href="https://coxley.org/logging/">Python Logging: The Missing Guide</a></h1>
           <span class="post-date">Apr 25, 2020 </span>
-          <div class="post-content">
+
+          <article class="post-content">
             
 
 <p>Python loggers can be configured a million ways. That’s too much.</p>
@@ -54,7 +45,7 @@
 
 <p>Follow this guideline for both libraries and CLI entry-points. Technically the name of <code>__main__</code>&rsquo;s logger doesn’t matter, but inconsistencies tend to spread.</p>
 
-<pre><code class="language-python"># Module: foo/bar/baz.py
+<pre><code># Module: foo/bar/baz.py
 
 # GOOD: These are equivalent. Use the first one.
 LOG = logging.getLogger(__name__)
@@ -84,7 +75,7 @@ LOG = logging.getLogger(None)
 <li>Filters</li>
 </ul>
 
-<p>Log names, split by period, make up the hierarchy. When logs are issued, they bubble up, visiting each handler, unless stopped by a filter. Or the minimum level.</p>
+<p>Log names, split by period, make up the hierarchy. When logs are issued, they bubble up, visiting each handler, unless stopped by a filter. Or the minimum level. (<a href="https://docs.python.org/3/howto/logging.html#logging-flow">Details</a>)</p>
 
 <p>This makes it handy to do things like:</p>
 
@@ -96,7 +87,7 @@ LOG = logging.getLogger(None)
 
 <p>Let’s demonstrate how this works:</p>
 
-<pre><code class="language-python">import logging
+<pre><code>import logging
 
 # Set up silly handler that prints a name it's given when a log arrives
 class DumbHandler(logging.Handler):
@@ -108,10 +99,9 @@ class DumbHandler(logging.Handler):
         print(f&quot;{self.title}: {record.getMessage()}&quot;)
 
 
-logging.root == logging.getLogger('')
 # True
+logging.root == logging.getLogger('')
 logging.root.setLevel(logging.DEBUG)
-# Default level is WARNING
 
 logging.root.addHandler(DumbHandler('root'))
 logging.getLogger('project.foo').addHandler(DumbHandler('project.foo'))
@@ -132,7 +122,7 @@ logging.getLogger('project.foo.bar').info('test')
 
 <p>All calls to <code>logging.getLogger(name)</code> will return the same logger instance. Storing in an instance variable pollutes the logging call-site — which should be frequent!</p>
 
-<pre><code class="language-python"># GOOD: At module level after imports
+<pre><code># GOOD: At module level after imports
 LOG = logging.getLogger(__name__)
 def foo():
   LOG.info('...')
@@ -166,7 +156,7 @@ def foo(logger: logging.Logger):
 
 <p>.</p>
 
-<pre><code class="language-python">&quot;&quot;&quot;
+<pre><code>&quot;&quot;&quot;
 Use `contextvars` to share metadata with your log handler.
 
 This works between imports, threads, and is `asyncio`-friendly.
@@ -238,7 +228,7 @@ copy_context().run(do_work)
 
 <p>A project I worked on did this once. Jobs that landed in Europe took significantly longer to run. We figured out it was due to 500-1000ms round-trips for each log message.</p>
 
-<pre><code class="language-python">import logging
+<pre><code>import logging
 import threading
 from queue import Queue
 
@@ -288,7 +278,7 @@ LOG.info(&quot;mighty cool&quot;)
 
 <p>When logs print more than once, there are too many <code>StreamHandlers</code> attached. Use <code>logging.removeHandler</code> for a deterministic starting point.</p>
 
-<pre><code class="language-python">for h in logging.root.handlers:
+<pre><code>for h in logging.root.handlers:
   if (
     isinstance(h, logging.StreamHandler) and
     getattr(h, &quot;stream&quot;, None) in (sys.stderr, sys.stdout)
@@ -300,22 +290,18 @@ LOG.info(&quot;mighty cool&quot;)
 
 <p>Don’t attach <code>StreamHandler</code> within libraries. Configure the root logger from the program entry-point.</p>
 
-          </div>
+          </article>
         </div>
         <div class="pagination"> 
         </div>
       </div>
     </div>
-    
     <div class="footer">
-  
-  <p>Powered by <a href="https://gohugo.io">Hugo</a>. This theme—Slim—is open sourced on <a href="https://github.com/zhe/hugo-theme-slim">Github</a>.</p>
-  
 </div>
 
   </div>
-  <script src="https://coxley.github.io/js/slim.js"></script>
-  <script src="https://coxley.github.io/js/highlight.min.js"></script>
+  <script src="https://coxley.org/js/slim.js"></script>
+  <script src="https://coxley.org/js/highlight.min.js"></script>
   <script>
     hljs.initHighlightingOnLoad();
   </script>
