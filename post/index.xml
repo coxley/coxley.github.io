@@ -18,7 +18,7 @@
       
       <guid>https://coxley.org/logging/</guid>
       <description>Python loggers can be configured a million ways. That’s too much.
-We can ease the pain by sticking to consistent practices. These patterns come from the most common issues that I see projects run into.
+We can ease the pain by sticking to consistent practices. Outlined below are the most common issues that I see projects run into.
 Naming Like modules, loggers are hierarchical. Their names should follow the import path of where they’re running. Loggers that stray from this are hard to work with. Use __name__ everywhere to get this for free.</description>
     </item>
     
