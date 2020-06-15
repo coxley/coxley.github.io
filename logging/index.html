@@ -51,7 +51,7 @@
 
 <p>Follow this guideline for both libraries and CLI entry-points. Technically the name of <code>__main__</code>&rsquo;s logger doesn’t matter, but inconsistencies tend to spread.</p>
 
-<pre><code># Module: foo/bar/baz.py
+<pre><code class="language-python"># Module: foo/bar/baz.py
 
 # GOOD: These are equivalent. Use the first one.
 LOG = logging.getLogger(__name__)
@@ -93,7 +93,7 @@ LOG = logging.getLogger(None)
 
 <p>Let’s demonstrate how this works:</p>
 
-<pre><code>import logging
+<pre><code class="language-python">import logging
 
 # Set up silly handler that prints a name it's given when a log arrives
 class DumbHandler(logging.Handler):
@@ -128,7 +128,7 @@ logging.getLogger('project.foo.bar').info('test')
 
 <p>All calls to <code>logging.getLogger(name)</code> will return the same logger instance. Storing in an instance variable pollutes the logging call-site — which should be frequent!</p>
 
-<pre><code># GOOD: At module level after imports
+<pre><code class="language-python"># GOOD: At module level after imports
 LOG = logging.getLogger(__name__)
 def foo():
   LOG.info('...')
@@ -162,7 +162,7 @@ def foo(logger: logging.Logger):
 
 <p>.</p>
 
-<pre><code>&quot;&quot;&quot;
+<pre><code class="language-python">&quot;&quot;&quot;
 Use `contextvars` to share metadata with your log handler.
 
 This works between imports, threads, and is `asyncio`-friendly.
@@ -234,7 +234,7 @@ copy_context().run(do_work)
 
 <p>A project I worked on did this once. Jobs that landed in Europe took significantly longer to run. We figured out it was due to 500-1000ms round-trips for each log message.</p>
 
-<pre><code>import logging
+<pre><code class="language-python">import logging
 import threading
 from queue import Queue
 
@@ -284,7 +284,7 @@ LOG.info(&quot;mighty cool&quot;)
 
 <p>When logs print more than once, there are too many <code>StreamHandlers</code> attached. Use <code>logging.removeHandler</code> for a deterministic starting point.</p>
 
-<pre><code>for h in logging.root.handlers:
+<pre><code class="language-python">for h in logging.root.handlers:
   if (
     isinstance(h, logging.StreamHandler) and
     getattr(h, &quot;stream&quot;, None) in (sys.stderr, sys.stdout)

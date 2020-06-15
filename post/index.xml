@@ -6,10 +6,21 @@
     <description>Recent content in Posts on coxley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Apr 2020 23:28:19 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2020 08:45:58 -0700</lastBuildDate>
     
 	<atom:link href="https://coxley.org/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ship Code Faster: Summaries</title>
+      <link>https://coxley.org/summaries/</link>
+      <pubDate>Mon, 15 Jun 2020 08:45:58 -0700</pubDate>
+      
+      <guid>https://coxley.org/summaries/</guid>
+      <description>Do your changes take a long time to get accepted? Is there a lot of back and forth with reviewers to understand context?
+We limit round-trips to other systems in software — why not code review? Consider reviewers as external systems. Answer questions up-front to avoid unnecessary round-trips.
+Assume reviewers aren’t as familiar with the code. Write down your thought process instead of waiting for the right question to be asked.</description>
+    </item>
     
     <item>
       <title>Python Logging: The Missing Guide</title>
