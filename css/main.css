@@ -21,8 +21,7 @@ body {
     font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, Serif;
     font-size: 100%;
     font-weight: 400;
-    line-height: 1.85;
-    letter-spacing: 0.01rem;
+    line-height: 150%;
 }
 
 .hanchor {
@@ -39,7 +38,7 @@ h1:hover a {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.25;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.1rem;
     font-family: 'Source Sans Pro', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 h1 {
@@ -56,7 +55,7 @@ h4, h5, h6 {
 }
 p, dl, ol, ul {
     margin-top: 0;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.25rem;
 }
 a {
     color: var(--primary-accent);
@@ -127,9 +126,8 @@ hr {
 .header {
     display: flex
     flex-flow: row nowrap;
-    justify-content: flex-start;
-    position: relative;
-    margin: 3rem auto;
+    justify-content: space-between;
+    margin: 2rem auto;
 }
 .site-title {
     font-size: 2rem;
@@ -147,11 +145,12 @@ hr {
 
 .nav {
     position: sticky;
-    top: 2rem;
+    top: 5rem;
     align-self: start;
     margin-top: 2rem;
-    padding-right: 1rem;
-    border-right: 1px solid #efefef;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    border-left: 1px solid #efefef;
 
 }
 
@@ -185,7 +184,7 @@ hr {
 
 @media all and (max-width: 800px) {
   .nav { display: none; }
-  .right-buffer { display: none; }
+  .left-buffer { display: none; }
 }
 
 .post {
@@ -194,7 +193,7 @@ hr {
     max-width: 42em;
 }
 
-.right-buffer {
+.left-buffer {
     margin: auto;
     width: auto;
 }

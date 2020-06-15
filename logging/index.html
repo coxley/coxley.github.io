@@ -27,21 +27,14 @@
 
   <div class="header">
   <h1 class="site-title"><a href="https://coxley.org/">coxley</a></h1>
+  
+  <a href="https://coxley.org//about">about me</a>
+  
+  
 </div>
 
   <div class="main">
-    <aside class="nav">
-      <nav id="TableOfContents">
-<ul>
-<li><a href="#naming">Naming</a></li>
-<li><a href="#hierarchy-handlers-filters">Hierarchy: Handlers &amp; Filters</a></li>
-<li><a href="#avoid-the-self-logger-pattern">Avoid the <code>self.logger</code> Pattern</a></li>
-<li><a href="#adding-context">Adding Context</a></li>
-<li><a href="#logging-over-the-network">Logging Over the Network</a></li>
-<li><a href="#duplicate-logs-in-terminal">Duplicate Logs in Terminal</a></li>
-</ul>
-</nav>
-    </aside>
+    <div class="left-buffer"></div>
     <div class="post">
       <h1 class="post-title">Python Logging: The Missing Guide</h1>
       <span class="post-date">Apr 25, 2020 </span>
@@ -304,16 +297,22 @@ LOG.info(&quot;mighty cool&quot;)
 <p>Don’t attach <code>StreamHandler</code> within libraries. Configure the root logger from the program entry-point.</p>
 
       </article>
-
-      <div class="pagination">
-        
-        
-      </div>
       <div class="footer">
 </div>
 
     </div>
-    <div class="right-buffer"></div>
+    <aside class="nav">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#naming">Naming</a></li>
+<li><a href="#hierarchy-handlers-filters">Hierarchy: Handlers &amp; Filters</a></li>
+<li><a href="#avoid-the-self-logger-pattern">Avoid the <code>self.logger</code> Pattern</a></li>
+<li><a href="#adding-context">Adding Context</a></li>
+<li><a href="#logging-over-the-network">Logging Over the Network</a></li>
+<li><a href="#duplicate-logs-in-terminal">Duplicate Logs in Terminal</a></li>
+</ul>
+</nav>
+    </aside>
   </div>
 
   <script src="https://coxley.org/js/main.js"></script>
