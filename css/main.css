@@ -126,7 +126,6 @@ hr {
 .header {
     display: flex
     flex-flow: row nowrap;
-    justify-content: space-between;
     margin: 2rem auto;
 }
 .site-title {
@@ -149,9 +148,9 @@ hr {
     align-self: start;
     margin-top: 2rem;
     padding-left: 1rem;
-    padding-right: 0.5rem;
+    margin-left: 2rem;
     border-left: 1px solid #efefef;
-
+    flex-grow: .05;
 }
 
 .nav a {
@@ -179,7 +178,8 @@ hr {
 
 .main {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
 }
 
 @media all and (max-width: 800px) {
