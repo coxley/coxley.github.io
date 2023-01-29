@@ -183,6 +183,7 @@ hr {
 }
 
 @media all and (max-width: 800px) {
+  .main { display: block; }
   .nav { display: none; }
   .left-buffer { display: none; }
 }
